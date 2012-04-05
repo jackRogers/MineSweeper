@@ -40,21 +40,21 @@ def makeBoard(x,y,mines,initer)
 	board.size.times {|lolcat| board[lolcat] = Array.new(x,initer)}
 	placed = 0
 	while placed < mines do 
-								xpos = rand(x)
-								ypos = rand(y)
-								if board[xpos][ypos] == 0
-									board[xpos][ypos] = "*"
-									placed += 1
-									#pop board as we place mines?
-								elsif board[xpos][ypos] == "*"
-									#print "already a mine here"
-								else 
-									print "Something went wrong"
-									break
-									end 
-									end
+		xpos = rand(x)
+		ypos = rand(y)
+		if board[xpos][ypos] == 0
+			board[xpos][ypos] = "*"
+			placed += 1
+			#pop board as we place mines?
+		elsif board[xpos][ypos] == "*"
+			#print "already a mine here"
+		else 
+			print "Something went wrong"
+			break
+			end 
+		end
 	return board
-	end
+end
 
 
 
