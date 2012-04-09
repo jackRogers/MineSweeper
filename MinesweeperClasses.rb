@@ -3,22 +3,6 @@
 #By Jack Rogers
 
 
-#class representing each game tile
-class Tile
-
-	#lets us access instance variables
-	attr_accessor :x, :y, :m, :seen
-
-	#new instance function
-	def initialize(x,y,value,seen=False)
-		@x = x 		#x coordinate
-		@y = y			#y coordinate
-		@value = value #0-8 if not a mine, "*" if mine
-		@seen = seen   #whether has been viewed or not.  should be stored only in maskboard
-	end
-		
-end		
-	
 #class representing the game board	
 class Board
 
@@ -170,9 +154,13 @@ class Player
 end
 
 
-lol = Board.new(10,10,10)
-print lol.x, " xsize \n"
-print lol.y, " ysize \n"
-print lol.m, " mines \n"
-lol.pprintboard()
+def mineTest()
+	lol = Board.new(10,10,10)
+	print lol.x, " xsize \n"
+	print lol.y, " ysize \n"
+	print lol.m, " mines \n"
+	lol.pprintboard()
+	end
+	
+mineTest()
 
