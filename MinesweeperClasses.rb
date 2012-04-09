@@ -31,7 +31,7 @@ class Board
 		@y = y							#vertical size
 		@m = m							#number of mines
 		@board = makeBoard()
-		@board = popBoard()	#fourth argument sets all elements of board to 0
+		@board2 = popBoard()
 		
 	end
 		
@@ -58,7 +58,7 @@ class Board
 	end
 	
 	def checker(i,j)
-# This function is very redundant and can be written better by a few smaller sub functions to avoid repetetive code
+	# This function is very redundant and can be written better by a few smaller sub functions to avoid repetetive code
 		#Check up
 			if @board[i][j] == "*"
 				return @board
@@ -129,7 +129,7 @@ class Board
 	
 	return board
 	
-end
+	end
 	
 	def popBoard()
 		intermediateBoard = @board
@@ -146,14 +146,14 @@ end
 		what = @x
 		huh = @y
 		what.times {|i| huh.times {|j| if @board[i][j] == 0
-									print " " 
-								elsif @board[i][j] == "*"
-									print "* " 						
-								else 
-									print @board[i][j]
-									print " " 
-									end}
-									print "\n" } 
+											print " " 
+										elsif @board[i][j] == "*"
+											print "* " 						
+										else 
+											print @board[i][j]
+											print " " 
+										end}
+										print "\n" }	
 		print "\n\n\n"
 		end
 	
@@ -171,5 +171,8 @@ end
 
 
 lol = Board.new(10,10,10)
+print lol.x, " xsize \n"
+print lol.y, " ysize \n"
+print lol.m, " mines \n"
 lol.pprintboard()
 
