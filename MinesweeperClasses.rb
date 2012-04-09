@@ -15,7 +15,7 @@ class Board
 		@y = y							#vertical size
 		@m = m							#number of mines
 		@board = makeBoard()
-		@board2 = popBoard()
+		popBoard()
 		
 	end
 		
@@ -38,7 +38,7 @@ class Board
 				break
 			end 
 		end
-		@board = board
+		return board
 	end
 	
 	def checker(i,j)
@@ -119,9 +119,6 @@ class Board
 		intermediateBoard = @board
 		@x.times { |i| @y.times { |j| intermediateBoard = checker(i,j) }
 		}
-		return 
-		
-		@board = intermediateBoard
 				
 	end
 	
