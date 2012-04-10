@@ -17,7 +17,6 @@ class Board
 		@board = makeBoard()
 		popBoard()
 		@mask = makeMaskBoard()
-		
 	end
 		
 	#old makeBoard Function
@@ -241,9 +240,23 @@ end
 
 #class that represents the player that interacts with the board
 class Player
+	attr_accessor
+	
+	def initialize()
+		@name
+		@wins
+		@games
+		@percentage
+		@game
+		end
+		
 end
 
+class Ai
+end
 
+class Ui
+end
 
 def mineTest()
 	lol = Board.new(10,10,10)
@@ -256,4 +269,3 @@ def mineTest()
 	end
 	
 mineTest()
-
