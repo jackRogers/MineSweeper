@@ -2,15 +2,8 @@
 #classes v0.1
 #By Jack Rogers
 
-
-<<<<<<< HEAD
-	attr_accessor :x
-	attr_accessor :y
-	attr_accessor :value
-=======
 #class representing the game board	
 class Board
->>>>>>> 98815e2ee634e6b9a928fe1fbcb8fbc759f0fc64
 
 	#lets us access instance variables
 	attr_accessor :x,:y,:m,:board,:mask
@@ -51,7 +44,7 @@ class Board
 	# This function is very redundant and can be written better by a few smaller sub functions to avoid repetetive code
 		#Check up
 			if @board[i][j] == "*"
-				return @board
+				return nil
 				end
 		
 			if j == 0
@@ -122,8 +115,7 @@ class Board
 	end
 	
 	def popBoard()
-		intermediateBoard = @board
-		@x.times { |i| @y.times { |j| intermediateBoard = checker(i,j) }
+		@x.times { |i| @y.times { |j| checker(i,j) }
 		}
 				
 	end
