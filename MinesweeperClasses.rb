@@ -5,7 +5,7 @@
 class tile
 {
 
-	attr_accessor x
+	attr_accessor :x
 	attr_accessor :y
 	attr_accessor :value
 
