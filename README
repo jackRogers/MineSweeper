@@ -3,4 +3,31 @@ Jack Rogers
 New College of Florida
 April 2012
 
-Eventually put stuff here
+
+Summary:
+	MineSweeper in Ruby with a graphical user interface and a artificial
+	 intelligence that will try to play the game.  
+
+
+Requirements:
+	MineSweeper game
+	Graphical User Interface probably using Rubygame
+	AI
+		Unsupervised Neural Network?
+		Algorithmic Solution?
+
+Algorithm Research:
+	Algorithmic Soultions:
+		Link to be retrieved
+	Unsuperivsed Neural Network:
+		SmartSweeper
+			http://www.pygame.org/project-Smartsweeper-1492-.html
+
+
+Interface Design:
+	Rubygame
+
+
+API Documentation:
+	Board
+	Player
