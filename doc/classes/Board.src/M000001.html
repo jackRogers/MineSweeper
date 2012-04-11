@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Board)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File MineSweeper.rb, line 12</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>,<span class="ruby-identifier">m</span>)
+                <span class="ruby-ivar">@x</span> = <span class="ruby-identifier">x</span>                                                        <span class="ruby-comment cmt">#horizonal size</span>
+                <span class="ruby-ivar">@y</span> = <span class="ruby-identifier">y</span>                                                        <span class="ruby-comment cmt">#vertical size</span>
+                <span class="ruby-ivar">@m</span> = <span class="ruby-identifier">m</span>                                                        <span class="ruby-comment cmt">#number of mines</span>
+                <span class="ruby-ivar">@board</span> = <span class="ruby-identifier">makeBoard</span>()
+                <span class="ruby-identifier">popBoard</span>()
+                <span class="ruby-ivar">@mask</span> = <span class="ruby-identifier">makeMaskBoard</span>()
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
