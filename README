@@ -11,6 +11,9 @@ Summary:
 
 Requirements:
 	MineSweeper game
+		Player can view the board
+		Player can reveal a tile
+		Player can undo
 	Graphical User Interface probably using Rubygame
 	AI
 		Unsupervised Neural Network?
