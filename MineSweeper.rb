@@ -18,7 +18,7 @@ class Board
 		@mask = makeMaskBoard()
 	end
 		
-	#old makeBoard Function
+	#makeBoard Function
 	def makeBoard()
 		board = Array.new(@y)
 		board.size.times {|lolcat| board[lolcat] = Array.new(@x,0)}
@@ -40,6 +40,7 @@ class Board
 		return board
 	end
 	
+	#function that checks neighbors of a given tile to set value of each tile propperly
 	def checker(i,j)
 	# This function is very redundant and can be written better by a few smaller sub functions to avoid repetetive code
 		#Check up
@@ -114,18 +115,21 @@ class Board
 	
 	end
 	
+	#runs checker on each tile
 	def popBoard()
 		@x.times { |i| @y.times { |j| checker(i,j) }
 		}
 				
 	end
 	
+	#makes the minesweeper board that the player sees
 	def makeMaskBoard()
 		board = Array.new(@y)
 		board.size.times {|lolcat| board[lolcat] = Array.new(@x,nil)}
 		return board
 		end
 		
+	#reveals tiles on the mask board
 	def reveal(i,j)
 		if @mask[i][j] == nil
 			print "new",i,j,"\n"
@@ -216,10 +220,11 @@ class Board
 	end
 	end
 		
+	#flags a tile instead of revealing it
 	def flag
 	
 		end
-	
+	#pretty print the board
 	def pprintboard(board)
 		print "\n\n\n"
 		@x.times {|i| @y.times {|j| if board[i][j] == 0
@@ -240,6 +245,7 @@ end
 class Player
 	attr_accessor
 	
+	#initializes a new player instance
 	def initialize()
 		@name
 		@wins
@@ -250,12 +256,15 @@ class Player
 		
 end
 
+#class the represents the ai that plays minesweeper/analyses the board
 class Ai
 end
 
+#class the stores all references to rubygame library
 class Ui
 end
 
+#function that tests making a baord, making a mask baord, then clicking on tile (5,5)
 def mineTest()
 	lol = Board.new(10,10,10)
 	print lol.x, " xsize \n"
