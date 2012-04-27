@@ -6,7 +6,7 @@
 class Board
 
 	#lets us access instance variables
-	attr_accessor :x,:y,:m,:board,:mask
+	attr_accessor :x,:y,:m,:board,:mask, :alive
 
 	#new instance function
 	def initialize(x,y,m)
@@ -16,6 +16,7 @@ class Board
 		@board = makeBoard()
 		popBoard()
 		@mask = makeMaskBoard()
+		@alive = true
 	end
 		
 	#makeBoard Function
@@ -137,6 +138,7 @@ class Board
 			if @board[i][j] == "*"
 				@mask[i][j] = @board[i][j]
 				print "YOU LOSE"
+				@alive = false
 			#if number
 			elsif @board[i][j] != 0
 				@mask[i][j] = @board[i][j]
@@ -224,6 +226,7 @@ class Board
 	def flag
 	
 		end
+	
 	#pretty print the board
 	def pprintboard(board)
 		print "\n\n\n"
@@ -265,14 +268,34 @@ class Ui
 end
 
 #function that tests making a baord, making a mask baord, then clicking on tile (5,5)
+def playtest()
+	lol = Board.new(10,10,10)
+	lol.pprintboard(lol.mask)
+	while lol.alive == true do
+		print "What row?\n"
+		row = gets.to_i()
+		print "What column?\n"
+		column = gets.to_i()
+		lol.reveal(row,column)
+		lol.pprintboard(lol.mask)
+	end
+	end
+	
+
 def mineTest()
 	lol = Board.new(10,10,10)
 	print lol.x, " xsize \n"
 	print lol.y, " ysize \n"
 	print lol.m, " mines \n"
 	lol.pprintboard(lol.board)
-	lol.reveal(5,5)
+	lol.reveal(0,5)
+	print "0,5\n"
+	lol.pprintboard(lol.mask)
+	lol.reveal(5,0)
+	print "5,0\n"
 	lol.pprintboard(lol.mask)
 	end
-	
-mineTest()
+
+
+playtest()
+
