@@ -4,6 +4,8 @@ New College of Florida
 April 2012
 
 To do:
+	Fix commenting on is and js as it turns out i = row and j = column
+		So far I had commented as if it were the opposite, must fix
 	Write Tile Class
 	Restructure Board class to use Tile Class
 	Move minetest function into player and make player a revelvant class
@@ -16,6 +18,8 @@ To do:
 	finish inferface design section
 	finish api documentation section
 		Possibly use rdoc for this
+		
+* = done
 
 
 
@@ -34,6 +38,7 @@ Requirements:
 	AI
 		Unsupervised Neural Network?
 		Algorithmic Solution?
+
 
 Algorithm Research:
 	Algorithmic Soultions:

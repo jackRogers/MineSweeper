@@ -3,18 +3,98 @@
 #By Jack Rogers
 
 #class representing a tile on the game board
+#not yet merged with Board class
 class Tile
-#still not sure how to merge this
-#will get to it
-
-	def initialize(x,y,value)
 	
+	attr_accessor :x, :y, :value
+	
+	def initialize(x,y,value,board)
+		@x = x
+		@y = y
+		@value = value
+		@board = board
+		
+		@neighbors = getNeighbors()
+		
+	#returns a list of neighbors for a given tile
+	#under construction
+	def getNeighbors()
+		row = @x
+		column = @y
+		board = @board
+		ysize = board.y
+		xsize = board.x
+		neighbors = []
+		
+		#Check up
+			if row == 0
+				print "" #no tile above
+			else
+				neighbors.push(board[row-1][column])
+				end
+			
+		#Check down
+			if row == ysize - 1
+				print "" # no tile below
+			else
+				neighbors.push(board[row+1][column])
+				end
+				
+		#Check left
+			if column == 0
+				print "" # no tile to the left
+			else
+				neighbors.push(board[row][column-1])
+				end
+				
+		#Check right
+			if column == xsize - 1
+				print "" # no tile to the right
+			else
+				neighbors.push(board[row][column+1])
+				end
+		
+		#Check up-left
+			if row == 0
+				print "" # no tiles above
+			elsif column == 0
+				print "" # no tiles left
+			else
+				neighbors.push(board[row-1][column-1])
+				end
+		
+		#Check up-right
+			if column == xsize - 1
+				print "" #no tiles to the right
+			elsif row == 0
+				print "" # no tiles above
+			else
+				neighbors.push(board[row-1][column+1])
+				end
+		
+		#Check down-left
+			if column == 0
+				print "" #no tile to the left
+			elsif row == ysize - 1
+				print "" #no tile below
+			else
+				neighbors.push(board[row+1][column-1])
+				end
+		
+		#Check down-right
+			if column == xsize - 1
+				print "" #no tile right
+			elsif row == ysize - 1
+				print "" #no tile left
+			else
+				neighbors.push(board[row+1][column+1])
+				end
+
+	end
+
 
 end
-
-
 end
-
 
 #class representing the game board	
 class Board
@@ -23,9 +103,9 @@ class Board
 	attr_accessor :x,:y,:m,:board,:mask, :alive
 
 	#new instance function
-	def initialize(x,y,m)
-		@x = x							#horizonal size
-		@y = y							#vertical size
+	def initialize(columns,rows,m)
+		@x = columns						#horizonal size
+		@y = rows							#vertical size
 		@m = m							#number of mines
 		@board = makeBoard()
 		popBoard()
@@ -58,6 +138,13 @@ class Board
 	#function that checks neighbors of a given tile to set value of each tile propperly
 	def checker(i,j)
 	# This function is very redundant and can be written better by a few smaller sub functions to avoid repetetive code
+	#Turns out
+		#i = row
+		#j = column
+		#will change commenting appropriatly
+		
+		#UNDER CONSTRUCTION
+		
 		#Check up
 			if @board[i][j] == "*"
 				return nil
