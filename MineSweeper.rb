@@ -103,10 +103,10 @@ class Board
 	attr_accessor :x,:y,:m,:board,:mask, :alive
 
 	#new instance function
-	def initialize(columns,rows,m)
-		@x = columns						#horizonal size
-		@y = rows							#vertical size
-		@m = m							#number of mines
+	def initialize(columns,rows,mines)
+		@columns = columns						#horizonal size
+		@rows = rows							#vertical size
+		@mines = mines						#number of mines
 		@board = makeBoard()
 		popBoard()
 		@mask = makeMaskBoard()
@@ -115,17 +115,17 @@ class Board
 		
 	#makeBoard Function
 	def makeBoard()
-		board = Array.new(@y)
-		board.size.times {|lolcat| board[lolcat] = Array.new(@x,0)}
+		board = Array.new(@rows)
+		board.size.times {|lolcat| board[lolcat] = Array.new(@columns,0)}
 		placed = 0
-		while placed < @m do
-			xpos = rand(@x)
-			ypos = rand(@y)
-			if board[xpos][ypos] == 0
-				board[xpos][ypos] = "*"
+		while placed < @mines do
+			column = rand(@columns)
+			row = rand(@rows)
+			if board[column][row] == 0
+				board[column][row] = "*"
 				placed += 1
 				#pop board as we place mines?
-			elsif board[xpos][ypos] == "*"
+			elsif board[column][row] == "*"
 				#print "already a mine here"
 			else 
 				print "Something went wrong"
@@ -136,7 +136,7 @@ class Board
 	end
 	
 	#function that checks neighbors of a given tile to set value of each tile propperly
-	def checker(i,j)
+	def checker(row,column)
 	# This function is very redundant and can be written better by a few smaller sub functions to avoid repetetive code
 	#Turns out
 		#i = row
@@ -146,71 +146,71 @@ class Board
 		#UNDER CONSTRUCTION
 		
 		#Check up
-			if @board[i][j] == "*"
+			if @board[row][column] == "*"
 				return nil
 				end
 		
-			if j == 0
-				print ""
-			elsif @board[i][j-1] == "*"
-				@board[i][j] += 1
+			if row == 0
+				print "" #no tile above
+			elsif @board[row-1][column] == "*"
+				@board[row][column] += 1
 				end
 			
 		#Check down
-			if j == @y - 1
-				print ""
-			elsif @board[i][j+1] == "*"
-				@board[i][j] += 1
+			if row == @rows - 1
+				print "" #no tile below
+			elsif @board[row+1][column] == "*"
+				@board[row][column] += 1
 				end
 				
 		#Check left
-			if i == 0
-				print ""
-			elsif @board[i-1][j] == "*"
-				@board[i][j] += 1
+			if column == 0
+				print "" #no tile left
+			elsif @board[row][column-1] == "*"
+				@board[row][column] += 1
 				end
 				
 		#Check right
-			if i == @x - 1
-				print ""
-			elsif @board[i+1][j] == "*"
-				@board[i][j] += 1
+			if column == @columns - 1
+				print "" #no tile right
+			elsif @board[row][column+1] == "*"
+				@board[row][column] += 1
 				end
 		
 		#Check up-left
-			if i == 0
-				print ""
-			elsif j == 0
-				print ""
-			elsif @board[i-1][j-1] == "*"
-				@board[i][j] += 1
+			if row == 0
+				print "" # no tile up
+			elsif column == 0
+				print "" # no tile left
+			elsif @board[row-1][column-1] == "*"
+				@board[row][column] += 1
 				end
 		
 		#Check up-right
-			if i == @x - 1
-				print ""
-			elsif j == 0
-				print ""
-			elsif @board[i+1][j-1] == "*"
-				@board[i][j] += 1
+			if column == @columns - 1
+				print "" #no tile right
+			elsif row == 0
+				print "" # no tile up
+			elsif @board[row-1][column+1] == "*"
+				@board[row][column] += 1
 				end
 		
 		#Check down-left
-			if i == 0
-				print ""
-			elsif j == @y - 1
-				print ""
-			elsif board[i-1][j+1] == "*"
-				board[i][j] += 1
+			if column == 0
+				print "" #no tile left
+			elsif row == @rows - 1
+				print "" # no tile below
+			elsif board[row+1][column-1] == "*"
+				board[row][column] += 1
 				end
 		
 		#Check down-right
-			if i == @x - 1
+			if column == @columns - 1
 				print ""
-			elsif j == @y - 1
+			elsif row == @rows - 1
 				print ""
-			elsif @board[i+1][j+1] == "*"
-				@board[i][j] += 1
+			elsif @board[row+1][column+1] == "*"
+				@board[row][column] += 1
 				end
 	
 	return board
@@ -219,102 +219,102 @@ class Board
 	
 	#runs checker on each tile
 	def popBoard()
-		@x.times { |i| @y.times { |j| checker(i,j) }
+		@rows.times { |i| @columns.times { |j| checker(i,j) }
 		}
 				
 	end
 	
 	#makes the minesweeper board that the player sees
 	def makeMaskBoard()
-		board = Array.new(@y)
-		board.size.times {|lolcat| board[lolcat] = Array.new(@x,nil)}
+		board = Array.new(@rows)
+		board.size.times {|lolcat| board[lolcat] = Array.new(@columns,nil)}
 		return board
 		end
 		
 	#reveals tiles on the mask board
-	def reveal(i,j)
-		if @mask[i][j] == nil
-			print "new",i,j,"\n"
+	def reveal(row,column)
+		if @mask[row][column] == nil
+			print "new",row,column,"\n"
 			#if mine
-			if @board[i][j] == "*"
-				@mask[i][j] = @board[i][j]
+			if @board[row][column] == "*"
+				@mask[row][column] = @board[row][column]
 				print "YOU LOSE"
 				@alive = false
 			#if number
-			elsif @board[i][j] != 0
-				@mask[i][j] = @board[i][j]
+			elsif @board[row][column] != 0
+				@mask[row][column] = @board[row][column]
 			#if empty
-			elsif @board[i][j] == 0
-				@mask[i][j] = @board[i][j]
+			elsif @board[row][column] == 0
+				@mask[row][column] = @board[row][column]
 				#reveal every non-border tile around tile
 				
 				#reveal up
-				if j == 0
+				if row == 0
 				else
 					#print i,j,"revealed",i,j-1,"\n"
-					reveal(i,j-1)
+					reveal(row-1,column)
 					end
 				
 				#reveal down
-				if j == @y-1
+				if row == @rows-1
 					print ""
 				else
 					print ""
-					reveal(i,j+1)
+					reveal(row+1,column)
 					end
 				
 				#reveal left
-				if i == 0
+				if column == 0
 					print ""
 				else
 					print ""
-					reveal(i-1,j)
+					reveal(row,column-1)
 					end
 				
 				#reveal right
-				if i == @x-1
+				if column == @columns-1
 					print ""
 				else
 					print ""
-					reveal(i+1,j)
+					reveal(row,column+1)
 					end
 				#reveal upleft
 		
-				if i == 0
+				if row == 0
 					print ""
-				elsif j == 0
+				elsif column == 0
 					print ""
 				else
 					print ""
-					reveal(i-1,j-1)
+					reveal(row-1,column-1)
 					end
 			#Check up-right
-				if i == @x - 1
+				if column == @columns - 1
 					print ""
-				elsif j == 0
+				elsif row == 0
 					print ""
 				else
 					print ""
-					reveal(i+1,j-1)
+					reveal(row-1,column+1)
 					end
 			
 			#Check down-left
-				if i == 0
+				if column == 0
 					print ""
-				elsif j == @y - 1
+				elsif row == @rows - 1
 					print ""
 				else
 					print ""
-					reveal(i-1,j+1)
+					reveal(row+1,column-1)
 					end
 			#Check down-right
-				if i == @x - 1
+				if row == @rows - 1
 					print ""
-				elsif j == @y - 1
+				elsif column == @columns - 1
 					print ""
 				else
 					print ""
-					reveal(i+1,j+1)
+					reveal(row+1,column+1)
 					
 				end
 		else
@@ -331,7 +331,7 @@ class Board
 	#pretty print the board
 	def pprintboard(board)
 		print "\n\n\n"
-		@x.times {|i| @y.times {|j| if board[i][j] == 0
+		@rows.times {|i| @columns.times {|j| if board[i][j] == 0
 											print ".\t" 
 										elsif board[i][j] == "*"
 											print "*\t" 						
@@ -373,6 +373,7 @@ end
 #function that tests making a baord, making a mask baord, then clicking on tile (5,5)
 def playtest()
 	lol = Board.new(10,10,10)
+	lol.pprintboard(lol.board)
 	lol.pprintboard(lol.mask)
 	while lol.alive == true do
 		print "What row?\n"
