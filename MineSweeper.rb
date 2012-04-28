@@ -22,8 +22,8 @@ class Tile
 		row = @x
 		column = @y
 		board = @board
-		ysize = board.y
-		xsize = board.x
+		columns = board.columns
+		rows = board.rows
 		neighbors = []
 		
 		#Check up
@@ -34,7 +34,7 @@ class Tile
 				end
 			
 		#Check down
-			if row == ysize - 1
+			if row == rows - 1
 				print "" # no tile below
 			else
 				neighbors.push(board[row+1][column])
@@ -48,7 +48,7 @@ class Tile
 				end
 				
 		#Check right
-			if column == xsize - 1
+			if column == columns - 1
 				print "" # no tile to the right
 			else
 				neighbors.push(board[row][column+1])
@@ -64,7 +64,7 @@ class Tile
 				end
 		
 		#Check up-right
-			if column == xsize - 1
+			if column == columns - 1
 				print "" #no tiles to the right
 			elsif row == 0
 				print "" # no tiles above
@@ -75,16 +75,16 @@ class Tile
 		#Check down-left
 			if column == 0
 				print "" #no tile to the left
-			elsif row == ysize - 1
+			elsif row == rows - 1
 				print "" #no tile below
 			else
 				neighbors.push(board[row+1][column-1])
 				end
 		
 		#Check down-right
-			if column == xsize - 1
+			if column == columns - 1
 				print "" #no tile right
-			elsif row == ysize - 1
+			elsif row == rows - 1
 				print "" #no tile left
 			else
 				neighbors.push(board[row+1][column+1])

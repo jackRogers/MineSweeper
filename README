@@ -4,6 +4,8 @@ New College of Florida
 April 2012
 
 To do:
+*	Fix muddling of is js xs ys etc
+*		Fixed some bugs that were hidden in the code as a result of this
 	Fix commenting on is and js as it turns out i = row and j = column
 		So far I had commented as if it were the opposite, must fix
 	Write Tile Class
