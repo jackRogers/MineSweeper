@@ -2,6 +2,16 @@
 #classes v0.1
 #By Jack Rogers
 
+#class representing a tile on the game board
+class Tile
+#still not sure how to merge this
+#will get to it
+
+	def initialize(x,y,value)
+	
+
+end
+
 #class representing the game board	
 class Board
 

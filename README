@@ -3,6 +3,21 @@ Jack Rogers
 New College of Florida
 April 2012
 
+To do:
+	Write Tile Class
+	Restructure Board class to use Tile Class
+	Move minetest function into player and make player a revelvant class
+	Write testing functions
+	Make a better text based gui
+	Make a gui with ruby game
+	Update rubydoc
+	Finish filling out requirements section
+	Finish algorithms research section
+	finish inferface design section
+	finish api documentation section
+		Possibly use rdoc for this
+
+
 
 Summary:
 	MineSweeper in Ruby with a graphical user interface and a artificial
@@ -13,6 +28,7 @@ Requirements:
 	MineSweeper game
 		Player can view the board
 		Player can reveal a tile
+		Player can put down a flag
 		Player can undo
 	Graphical User Interface probably using Rubygame
 	AI
