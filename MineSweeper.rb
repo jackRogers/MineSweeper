@@ -12,6 +12,10 @@ class Tile
 
 end
 
+
+end
+
+
 #class representing the game board	
 class Board
 
@@ -256,6 +260,8 @@ end
 
 #class that represents the player that interacts with the board
 class Player
+
+
 	attr_accessor
 	
 	#initializes a new player instance
