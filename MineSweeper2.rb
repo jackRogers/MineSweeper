@@ -29,7 +29,6 @@ class Tile
 			end
 		}
 	end
-	
 end
 
 class Board
@@ -152,7 +151,6 @@ class Board
 					#add neighbor down right
 					tile.addNeighbor(@board[tile.row+1][tile.column+1])
 				end
-				
 			end
 		}
 	end
@@ -187,7 +185,6 @@ class Board
 			#check if tile has mine neighbor
 			elsif @board[row][column].value != 0
 				@mask[row][column] = @board[row][column].value
-				
 			elsif @board[row][column].value == 0
 				#mark tile as revealed
 				@mask[row][column] = " "
@@ -199,16 +196,13 @@ class Board
 					reveal(r,c)
 				}
 			end
-		
 		else
 			#this tile has already been revealed or flagged
 		end
-			
 	end
 	
 	def flag(row,column)
 		@mask[row][column] = "F"
-	
 	end
 	
 	def pprintBoard()
@@ -220,6 +214,7 @@ class Board
 			print "\n"
 		}
 	end
+	
 	def pprintMask()
 		print "\n"
 		@rows.times{|row| 
@@ -228,7 +223,6 @@ class Board
 			}
 			print "\n"
 		}	
-	
 	end
 end
 
@@ -240,6 +234,5 @@ def test()
 	board.pprintMask()
 	print "\n"
 end
-
 
 test()
