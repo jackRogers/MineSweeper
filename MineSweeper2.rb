@@ -3,8 +3,11 @@
 #By Jack Rogers
 
 #ToDo
+	#Tile
+		#function that returns value
 	#Board
 		#function that returns a tile
+		#consider making mask a class of its own
 
 class Tile
 	attr_accessor :row, :column, :value, :neighbors, :board
@@ -30,7 +33,7 @@ class Tile
 end
 
 class Board
-	attr_accessor :x,:y,:m,:board,:mask,
+	attr_accessor :x,:y,:m,:board, :mask
 	def initialize(columns,rows,mines)
 		@columns = columns					
 		@rows = rows						
@@ -45,7 +48,7 @@ class Board
 	def makeBoard()
 		board = Array.new(@rows)
 		@rows.times{|row| board[row] = Array.new(@columns)}
-		@rows.times{|row| @columns.times {|column| board[row][column] = Tile(row,column,0)}}
+		@rows.times{|row| @columns.times {|column| board[row][column] = Tile.new(row,column,0)}}
 		return board
 	end
 		
@@ -178,6 +181,7 @@ class Board
 		if @mask[row][column] == nil
 			#check if tile is mine
 			if @board[row][column].value == "M"
+				@mask[row][column] = "M"
 				print "YOU LOSE"
 				@alive = false
 			#check if tile has mine neighbor
@@ -207,6 +211,35 @@ class Board
 	
 	end
 	
+	def pprintBoard()
+		print "\n"
+		@rows.times{|row| 
+			@columns.times {|column|
+			print "\t", @board[row][column].value
+			}
+			print "\n"
+		}
+	end
+	def pprintMask()
+		print "\n"
+		@rows.times{|row| 
+			@columns.times {|column|
+			print "\t", @mask[row][column]
+			}
+			print "\n"
+		}	
 	
-	
+	end
 end
+
+def test()
+	board = Board.new(10,10,10)
+	board.pprintBoard()
+	print "\n"
+	board.reveal(5,5)
+	board.pprintMask()
+	print "\n"
+end
+
+
+test()
