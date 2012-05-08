@@ -5,16 +5,21 @@
 
 <html>
 <head>
-  <title>makeMaskBoard (Board)</title>
+  <title>new (Board)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File MineSweeper.rb, line 126</span>
-        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">makeMaskBoard</span>()
-                <span class="ruby-identifier">board</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@y</span>)
-                <span class="ruby-identifier">board</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">lolcat</span><span class="ruby-operator">|</span> <span class="ruby-identifier">board</span>[<span class="ruby-identifier">lolcat</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@x</span>,<span class="ruby-keyword kw">nil</span>)}
-                <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">board</span>
+  <pre><span class="ruby-comment cmt"># File MineSweeper2.rb, line 36</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">columns</span>,<span class="ruby-identifier">rows</span>,<span class="ruby-identifier">mines</span>)
+                <span class="ruby-ivar">@columns</span> = <span class="ruby-identifier">columns</span>                                    
+                <span class="ruby-ivar">@rows</span> = <span class="ruby-identifier">rows</span>                                          
+                <span class="ruby-ivar">@mines</span> = <span class="ruby-identifier">mines</span>                                                
+                <span class="ruby-ivar">@board</span> = <span class="ruby-identifier">makeBoard</span>()
+                <span class="ruby-identifier">makeNeighbors</span>()
+                <span class="ruby-identifier">placeMines</span>()
+                <span class="ruby-ivar">@mask</span> = <span class="ruby-identifier">makeMask</span>()
+                <span class="ruby-ivar">@alive</span> = <span class="ruby-keyword kw">true</span>
                 <span class="ruby-keyword kw">end</span></pre>
 </body>
 </html>
